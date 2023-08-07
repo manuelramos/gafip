@@ -49,3 +49,78 @@ Alternatively, you can store these environment variables in a file (e.g., .env) 
 ### Connecting to PostgreSQL
 
 With the environment variables properly set, the project will use the PostgreSQL implementation to connect to the database using the specified credentials.
+
+## Compiling the Application for Development and Production
+
+## Prerequisites
+
+Before compiling the application, make sure you have the following installed on your system:
+
+- Go (Golang): Make sure you have Go installed and properly set up on your system. You can download Go from the official website: https://golang.org/
+
+## Setting Up Environment Variables
+
+The application relies on certain environment variables to configure the database connection. You need to create a file named `.env` in the root of your project directory and set the following variables:
+
+```plaintext
+DB_TYPE=       # Set your database type (postgres, mysql, sqlite)
+DB_HOST=       # Set your database host (e.g., localhost, 127.0.0.1)
+DB_PORT=       # Set your database port (e.g., 5432 for PostgreSQL, 3306 for MySQL)
+DB_USER=       # Set your database username
+DB_PASSWORD=   # Set your database password
+DB_NAME=       # Set your database name
+```
+## Compiling for Development
+To compile the application for development, follow these steps:
+
+1 - Open a terminal or command prompt.
+
+2 - Set the necessary environment variables for development by running:
+
+```bash
+$ export $(grep -v '^#' .env | xargs)
+```
+
+This command will read the values from the .env file and set them as environment variables in the current shell.
+
+3 - Build the application for development by running:
+
+```bash
+$ make dev
+```
+
+The compiled binary will be placed in the `build` directory.
+
+4 - Run the application in development mode by executing:
+
+```bash
+$ make run
+```
+
+The application should now be running with the provided database configuration for development.
+
+## Compiling for Production
+To compile the application for production, follow these steps:
+
+1 - Open a terminal or command prompt.
+2 - Set the necessary environment variables for production by running:
+
+```bash
+$ export $(grep -v '^#' .env | xargs)
+```
+
+This command will read the values from the .env file and set them as environment variables in the current shell.
+
+3 - Build the application for production by running:
+
+```bash
+$ make prod
+```
+
+The compiled binary will be placed in the `build` directory.
+
+4 - Run the application in production mode by executing:
+
+```bash
+$ make run
+```
